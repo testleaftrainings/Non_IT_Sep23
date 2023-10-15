@@ -1,0 +1,251 @@
+Select:
+Select class
+--------------------
+Select its a class
+<select>
+   <option>value=blue()>visibletext</option>
+Three method:
+1.select by index(0)
+2.select by value("attribute value")
+3.select by visibletext("black colour visible text")
+
+findElement returns----WebElement
+
+How  to handle dropdown
+Select tag
+
+if not in select tag you can use as usual click()
+
+
+wait
+-----
+ to addressing timinig difference between script & application
+ 
+ Selenium wait
+ --------------
+ 1.Implicitly Wait
+ 2.Explicitly wait
+  
+  
+  Java Wait(Explicitly wait)
+  ---------
+  Thread.sleep(2000)--->it will slow down my execution
+  -this has to be applied wherever need we can use.
+  -single line
+  -it will wait till the end of the time limit
+
+ 1.Implicitly Wait
+Implicitly Wait is one of the wait in Selenium WebDriver framework. 
+It is used to set a global timeout that applies to all elements in your script.
+The main purpose of Implicitly Wait is to tell the WebDriver to wait for a certain amount of time
+for an element to become available or for a certain action to be performed before throwing an exception
+if the element is not found or the action is not completed.
+
+Here's how Implicitly Wait works:
+
+You set the Implicitly Wait timeout using the driver.manage().timeouts().implicitlyWait() method.
+If the element becomes available or the action is completed within the specified time, the WebDriver proceeds without any exception.
+If the timeout is reached before the element becomes available or the action is completed, a "NoSuchElementException" is thrown.
+
+ 30sec
+ -its a common wait for all locators (FindElement ,FindElements [] null)
+ -it used to avoid NoSuchElementException when the element is loaded little late
+ -if the element is loaded with in given time,it will locate the element immediately
+ -Best pratice to apply ImplicitWait at the starting of your script.
+ 
+
+
+
+office cab:
+7.30
+
+7.30
+
+7.31
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+XPATH -> XML Path
+XPath (XML Path Language) in Selenium is a powerful technique
+used to locate elements on a web page based on their XML path.
+XPath is a language for navigating and selecting elements in an XML document,
+which can also be applied to HTML documents.
+XPath is commonly used to locate elements on a web page by specifying their path relative to the document structure. 
+You can use XPath expressions to find elements based on attributes, text content, and their position in the HTML document.
+Types:
+-------
+Absolute XPATH -> Not very much used in real time
+
+Relative XPATH -> Most preferred xpath
+
+
+Absolute Xpath: starts with single slash / and followed by root tag <html>
+---------------
+Includes the complete hierarchy of parent elements leading to the target element.
+
+Absolute XPath expressions are often longer and more complex compared to other
+types of XPath expressions, and they are not recommended for regular use in Selenium
+automation. 
+Xpath -> Index starts with 1
+
+/html/body/div[2]/div[2]/div/form/p[1]/label
+
+- Will take time to write the xpath
+- Might fail when the page design is getting changed
+
+Relative Xpath: starts with // followed by the tagName of the WebElement
+---------------
+-->It allows you to identify elements based on attributes, text content, element types,
+and their relationship with other elements.
+
+-->Relative XPath expressions are more flexible than absolute XPath expressions because
+they are not dependent on the exact structure of the document.
+
+-->They can adapt to changes in the hierarchy as long as the relative relationship
+between elements remains the same.
+
+Syntax -> //tagName
+
+Attribute Based Xpath:
+-----------------------
+
+Syntax: //tagName[@attributeName='attribute value']
+		
+		//input[@id='username']
+		
+		//label[@for='username']
+		
+Text Based Xpath:
+------------------
+Syntax: //tagName[text()='text value']	
+		//h2[text()='Leaftaps Login']
+		
+Partial Match: contains()
+--------------	
+
+Partial Attribute based xpath:
+--------------------------------	
+Syntax: //tagName[contains(@attribute,'partial attribute value')]
+		//label[contains(@for,'user')]
+
+Partial Text based xpath:
+--------------------------------	
+		//tagName[contains(text(),'partial text')]
+		//h2[contains(text(),'Login')]
+		
+Collection Based Xpath: Using index
+-------------------------
+Syntax: (xpath)[index]
+		(//input[@class='inputLogin'])[2]	
+		
+		
+<p> and <label> -> Parent & Child
+<form> and <label> -> GrandParent & GrandChild
+top -> elder
+bottom -> younger
+<label> and <input> -> Elder Sibling & Younger Sibling
+<label>(username) & <label>(password) -> Elder Cousin & Younger Cousins		
+
+Week2day2:
+=========
+To get DOM-->click on 3 dots near the address bar-->more tools-->developer tools
+ctrl shift i
+
+Find the xpath :
+================
+https://www.nykaa.com/    -> Search box  using (name) attribute
+//input[@name='search-suggestions-nykaa']
+https://www.air.irctc.co.in/->Go to contact as for email write Partial attribute based xpath
+https://www.swiggy.com/   -> Text based (food button)
+https://www.zoomcar.com/in/bangalore-> write xpath for GET CAR Partial Text based (partial)
+//section[contains(text(),'CAR')]
+https://www.youtube.com/  ->click on youtube icon Collection based
+
+	
+Advanced Xpath:
+----------------		
+Parent To Child xpath:		
+
+Syntax: parent Xpath/tagName of child[index]
+		//form[@id='login']/p[2]
+		
+Child to Parent xpath:
+-----------------------
+Syntax: child xpath/parent::tagName of parent
+		//input[@id='password']/parent::p
+		
+		child xpath/..
+		//input[@id='password']/..
+		
+GrandChild to GrandParent:
+---------------------------		
+Syntax: GrandChild xpath/../..		
+		//input[@id='password']/../..
+				or
+		GrandChild xpath/ancestor::tagName of GrandParent
+		//input[@id='password']/ancestor::form
+		
+GrandParent to GrandChild: //
+---------------------------		
+Syntax: GrandParent Xpath//tagName of GrandChild
+		//form[@id='login']//input
+		
+		(//form[@id='login']//input)[1]
+		
+		
+Siblings:
+----------
+Elder to Younger -> Top to Bottom (following)
+----------------
+Syntax: Elder Sibling xpath/following-sibling::tagName of Younger
+		//label[@for='username']/following-sibling::input
+
+
+Younger to Elder -> Bottom to Top (preceding)
+----------------		
+Syntax: Younger Sibling xpath/preceding-sibling::tagName of Elder
+		//input[@id='username']/preceding-sibling::label
+		
+
+
+Cousins:
+---------
+Elder to Younger
+-----------------
+Syntax: Elder Cousin Xpath/following::tagName of Younger
+		//label[@for='username']/following::label
+		
+Younger	to Elder:
+------------------
+Syntax: Younger Cousin Xpath/preceding::tagName of	Elder
+		//input[@type='password']/preceding::input
+
+following -> It will find the immediate match
+preceding -> It will find the first matching tag from the root tag
+
+Advanced Xpath:
+===============
+1.Find the XPath of 1st resulting lead id result of find leads
+(//div[@class='x-grid3-cell-inner x-grid3-col-partyId']/a)[1]
+2.Myntra(https://www.myntra.com/)-> mens jeans : Xpath to click on flying machine checkbox
+3.Dominos(https://www.dominos.co.in/)->click on order now 
+//div[@class='row']/following::a[2]
+To get DOM-->Right click and inspect /click on 3 dots near the address bar-->more tools-->developer tools/
+ctrl shift i		
