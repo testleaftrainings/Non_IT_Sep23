@@ -9,3 +9,26 @@ Today Agenda:
 05:10 - 06:10-Collection(List)
 06:10 - 06:30-ClassRoom
 06:30 - 06:40-Recap
+
+
+Abstraction:
+
+*interface-100% abstract method -unimplemented methods
+*abstract class- 0 to 100%  ,i can have both implement and unimplement methods
+*concrete class or execution- 100% implemented methods
+
+
+interface and concrete class:
+SBI implements RBI -i need implement all method its coming from interface
+
+Class extends class
+
+class and interface:
+to connect calss and interface , i used keyword call 'implements'
+
+abstract class and interface : keyords -implements
+
+class and abstract class: keyword - extends 
+
+
+abstract class:
