@@ -1,0 +1,271 @@
+===============================================================================
+Target Locators:(Alert,frame,window)
+--------------
+
+Window / Tab
+================
+-Window handling in Selenium refers to the process of 
+managing multiple browser windows or tabs during test automation.
+-It allows you to switch the focus of the WebDriver to 
+different windows or tabs, interact with their content, 
+and perform actions within each window or tab.
+- Window or Tab is technically same
+- Window / Tab -> URL / browser controls.
+
+C43B89A7280850BC71458E76008F64FE
+FA8ED917A46E3F150C369820BB828DA3
+
+Challenges
+
+- Window URL / Title / Sequence Number can change
+- So, how to find the window uniquely?
+
+Selenium Way
+
+- Every new window -> tag it -> new WindowHandle -> String (unique)
+
+
+Exception
+
+NoSuchWindowException
+
+Close and Quit
+
+How to swtitch to a new window ?
+
+- getWindowHandles()
+- Convert Set to List
+- Pick the particular window using get(index)
+- Switch to the window using the handle
+- Close or Quit
+
+open window will be closed by driver.close();
+To close all the open window driver.quit();
+
+How to switch to a new window:
+-------------------------------
+1.how to get the reference?
+-getWindowHandle()---when ever u open the window
+to get currrent window reference
+
+-getWindowHandles()--to get the reference of all window open
+
+2.How to switch the control
+getWindowHandles() return as a Set--remove the duplication
+
+create a list
+
+Two window get()
+
+driver.switch().window(lstname.get(0))
+
+convert set into list
+
+pick the particular window using get(index)
+
+apply the driver.switch().window(lstname.get(0))
+
+close/quit
+
+
+
+Class Room 3:
+Navigate to https://www.irctc.co.in/
+Click on FLIGHTS link
+Switch to the Flights window
+Print the Title of the Flights window
+Close the Flights window alone
+Print the Train search window title (First window)
+
+
+
+SnapShot:
+=========
+a snapshot (or screenshot) refers to capturing an image of the current state of a web page 
+or a specific element on the page.
+Taking snapshots can be helpful for various purposes, 
+---debugging
+---error reporting
+---generating test evidence.
+
+To capture a snapshot in Selenium Java,
+you can use the TakesScreenshot interface provided by Selenium WebDriver.
+
+The getScreenshotAs method is called to capture the screenshot 
+as a byte array (OutputType.BYTES), 
+which you can further process or save to a file using libraries like Apache Commons IO.
+
+Taking snapshots:
+can help you troubleshoot issues, verify expected states,
+and provide visual evidence of test execution.
+                 //Take a snapshot
+		Step1:		File source = driver.getScreenshotAs(OutputType.FILE);
+				//Create folder to save the img file
+		Step2:		File dest =new File("./snap/img1.png");
+				//Merge source and destination
+		Step3:		FileUtils.copyFile(source, dest);
+
+Ensure that you have the Apache Commons IO library added to your project dependencies
+to use the FileUtils class for file operations.
+
+
+Actions Class
+----------------
+the Actions class is a feature that allows you to simulate advanced user
+interactions involving the mouse and keyboard. 
+It provides a set of methods to perform various actions such as clicking,
+hovering, dragging and dropping, double-clicking, right-clicking, and entering text.
+
+The Actions class is part of the org.openqa.selenium.interactions package in Selenium WebDriver.
+To use the Actions class, you need to create an instance of it by passing the WebDriver instance as a parameter.
+
+Advanced user Interaction
+-------------------------
+click
+sendkeys
+clear
+getText()
+getAttribute()
+
+Advanced user interactions:
+------------------------------
+Mouse and keyboard
+
+Actions class
+
+Action class is not throw any exception
+-----------------------------------------
+1.MouseHover
+-------------
+Actions builder=new Actions(driver);
+builder.moveToElement(webElement).perform();
+
+2.Droppable
+Actions builder=new Actions(driver);
+builder.dragAndDrop(source,destination).perform();
+
+3.Draggable
+Actions builder=new Actions(driver);
+builder.dragAndDropBy(webElement,x,y).perform();
+Drag and DropBy
+
+4.RightClick
+Actions builder=new Actions(driver);
+builder.contextclick(webElement).perform();
+
+5.DoubleClick
+Actions builder=new Actions(driver);
+builder.doubleclick(webElement).perform();
+
+6.ScrollDown
+Actions builder=new Actions(driver);
+builder.scrollToElement(webElement).perform();
+
+7.Select
+--------
+Actions builder=new Actions(driver);
+
+// Step1 : Create object for Actions class
+		Actions builder = new Actions(driver);
+
+// step2: use appropriate method to do the action
+builder.clickAndHold(WebElement).moveToElement(WebElement).release().perform();
+
+// perform() is mandatory at the end of actions
+
+8.sort the element:
+Actions builder=new Actions(driver);
+builder.dragAndDrop(item6,item1).dragAndDrop(item2,item 3).perform
+builder.dragAndDropBy(webElement,x,y).perform();
+
+9.keys action:
+
+builder.keyDown(Keys.CONTROL).click(WebElement).click(WebElement).click(WebElement).click(WebElement).keyUp(Keys.CONTROL).perform();
+				other method:
+builder.clickAndHold(item1).moveToElement(item4).release().perform();
+Keyboard Methods:
+======================
+sendKeys(keysToSend) : sends a series of keystrokes onto the element
+keyDown(theKey) : Sends a key press without release it. Subsequent actions may assume it as pressed. (example: Keys.ALT, Keys.SHIFT, or Keys.CONTROL)
+keyUp(theKey): Performs a key release
+
+Mouse Actions:
+==========================
+
+click (): Simply click on element
+doubleClick (): Double clicks onElement
+contextClick() : Performs a context-click (right click) on an element
+clickAndHold(): Clicks at the present mouse location (without releasing)
+dragAndDrop(source, target): Invokes click-and-hold at the source location and moves to the location of the target element before releasing the mouse. source – element to grab, target – element to release
+dragAndDropBy(source, xOffset, yOffset): Invokes click-and-hold at the source location and moves to the location and release
+moveToElement(toElement): It shifts the mouse to the center of the element
+release(): Releases the depressed left mouse button at the existing mouse location
+
+
+=====================================================
+
+
+ClassRoom 1:
+Load the url :https://jqueryui.com/droppable/
+Actions builder=new Actions(driver);
+perform Drag and drop
+
+ClassRoom 2: 
+Load the url :https://www.snapdeal.com/
+perform MouseHover Action on Men's Fashion 
+Actions builder=new Actions(driver);
+
+ClassRoom 3:
+Load the url:https://www.leafground.com/menu.xhtml
+perform RightClick
+
+
+
+
+
+
+
+
+
+
+
+
+
+WebTable:
+
+ 
+
+
+
+<table>
+
+<thead>Sample table</thead>
+
+<tbody>
+
+<tr>
+  <th>Name</th>
+  <th>Age</th>
+  <th>Gender</th>
+</tr>
+
+<tr>
+  <td>Ann</td>
+  <td>25</td>
+  <td>Female</td>
+</tr>
+<tr>
+  <td>Dan</td>
+  <td>30</td>
+  <td>Male</td>
+</tr>
+
+</tbody>
+</table>
+
+
+
+
+
+
+
