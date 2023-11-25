@@ -1,0 +1,202 @@
+Sunday Agenda
+----------------
+2.15 to 2.30 PM-----Recap with Assignment
+2.30 to 3.30 PM-----Exception Handling
+3.30 to 3.45 PM-----Break
+3.45 to 4.45 PM-----Pom Introduction-Design the page
+4.45 to 5.10 PM-----BreakOut
+5.10 t0 5.30 PM-----Sequential execution
+5.30 to 5.45 PM-----Break
+5.45 to 6.20 PM-----Parallel execution
+6.20 to 6.30 PM-----Excel integration
+6.30 to 6.45 PM-----Break out
+6.45 to 7.00 PM-----Home Assignment discussion
+
+
+
+Exception Handling:
+===================
+During the execution of a program if any unwanted or unexpected error comes that is called an exception. 
+
+It means if anything happens wrong during the execution of a program and disrupts the normal flow of the program’s instructions is called an exception. 
+
+Exceptions may occur for different reasons:
+
+-->If the user has entered the wrong data. Like the user is trying to divide any value by 0 e.g. 5/0.
+-->If the user tries to open a file with an invalid name.
+-->If a user tries to access an array with a negative index value.a[3]
+-->If a user tries to print a page but the printer doesn’t find it.
+
+
+
+There are two types of Exceptions, 
+--->Checked exception in java 
+--->unchecked exception in java
+
+Checked exceptions in java
+----------------------------
+Checked exceptions in java are also known as compile-time exceptions because these exceptions are checked by the compiler at compile-time. 
+If any method throws a checked exception, then it is the programmer’s responsibility either handle the exception or throw the exception by using the throws keyword. 
+We can’t ignore these exceptions at compile time. 
+The JVM checks these exceptions at the time of compilation time.
+
+Unchecked exception in java
+-----------------------------
+An unchecked exception in java is an exception that is not checked at the compiled time.
+The compiler is not able to recognize these exceptions at compile time. 
+An unchecked exception in java occurs at the time of execution, so they are also called Runtime Exceptions.
+For example NullPointerException, ArithmeticException, ArrayIndexOutOfBound, logic error, etc.
+
+Java provides some keywords to handle an exception, 
+try catch finally  is the keyword that is used to control the exception.
+
+1. try keyword: The try keyword is used on the block of statements where we are excepting an exception.
+If any exception occurs in the try block then the control jumps to the next block 
+which will be the catch block or finally block. 
+But it will handle the situation and the execution of the program will not be stopped.
+
+2. catch keyword: The catch keyword is used with a block that is known as a catch block.
+The catch block catches the exception that is through by try block. 
+We can catch the exception and print the reason of the exception.
+
+3. finally keyword: This keyword is also used with a block but it is a special block because it always executes whether any error occurs or not.
+We can perform some important operations like closing the DB connection.
+
+
+
+
+throw keyword in java
+------------------------
+The throw keyword in java uses to throw an exception from a method or block of code.
+If you want to throw an exception on the basis of certain conditions,you can use the throw keyword.
+
+For example, if a user entered the null/blank password we should throw an exception to the client.
+
+We can throw either checked or unchecked exceptions. 
+During the execution of the method if the compiler encounters a throw keyword then the execution of the current method stop and returned to the caller.
+The compiler tries to find the nearest try block.
+If thrown exception match with the catch block and is handle by a catch block otherwise it tries to find the next try block and so on. 
+If no one catch block matches with the exception, then the default exception handler executes automatically.
+
+
+throws keyword in java
+---------------------------
+throws keyword in java uses in a method declaration, denoted which Exception can possibly be thrown by this method.
+
+By using the throws keyword in java, we can throw multiple exceptions.
+
+During the execution of the method if any exception occurs and the programmer already uses
+the throws keyword in java then the execution of the current method stops and returns to the caller.
+Then it depends upon the programmer either handling this exception by catching it or can rethrow it.
+throws keyword only uses for checked exceptions and the usage of the throws keyword
+
+
+
+
+
+Page Object Model
+-------------------
+----set up for sequential execution
+----set up for parallel execution
+----Integration of data parameterization
+Framework
+---------
+its a real or conceptial structure intended to guide or support the building of product.
+
+why framework
+--------------
+----To produce uniform output/result
+----To increase the productivity
+----Anyone can able to produce same result
+----Easy maintenance of script
+----Reduce the duplicate code
+----supports multi-Lingual application
+----support for better reporting(Extend rep,index html)
+
+POM--Page object Model
+POM.xml---Project object model
+POM--Page object Model
+-------------------------
+Design pattern to build a automation framework.
+
+selenium java
+webdrivermanager
+Testng
+apache poi
+
+
+leaftap
+--------
+how many page
+1.login
+2.homepage(crmsfa)
+3.leadpage
+4.create lead
+5.viewlead
+
+Steps
+------
+1.Create a package name base,pages,testcase,utils
+2.create java class for each page that we navigate in the application
+3.create method for each action and verification in the page
+4.create package for common class as ProjectSpecificMethod extends the class
+5.all the methods in the page should have return type based on landing page return this(same),different page (return new page name)
+6.Create new package for testcase create the class for testing
+7.all the testcase java class also should extends base class project specific method
+
+@BeforeMethod(PSM)
+
+  @Test(LoginTest)
+   page()
+
+
+
+Sequential execution:
+Static keyword
+convert testng xml then run the testcase.
+
+
+ChromeDriver: chrome on WINDOWS (b27e65b134df8679401c44b98e2805ca)
+ChromeDriver: chrome on WINDOWS (bc18063c470bf2698190f2324a63bf6a)
+
+ChromeDriver: chrome on WINDOWS (740e1815854778f51191487b1649a754)
+ChromeDriver: chrome on WINDOWS (b86f0ebeca5d565b1aa344ac73334f95)
+
+
+Parallel execution:
+1.Remove the static keyword
+2.pass the driver to all pages
+
+How to pass the driver from testcase to pages:
+   1.Create public constructorin all pages with chromeDriver as a aruguments
+        constructor code: this.driver=driver;
+   2.pass the driver to all constructor call starting from the testcase and all the constructor method
+
+
+Integrate DataProvider and ApachePOI
+------------------------------------
+1.Create excel data sheet
+2.create data folder and copy paste the excel file
+3.copy and paste ReadExcel java class under util package
+4.copy paste the excelfile name dataprovider in projectspecificmethod(import from utils)
+
+
+
+Excel---DataProvider----@Test
+@Beforetest-----its giving filename(createlead)
+    @DataProvider
+	 @BeforeMethod
+           
+	   @Test	   
+
+
+
+
+
+
+
+
+
+
+
+
